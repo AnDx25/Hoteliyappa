@@ -28,9 +28,10 @@ const helmet = require('helmet');
 
 var app = express();
 
+
 app.use(helmet());
 //compress responses
-app.use(compression());
+// app.use(compression());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
