@@ -1,0 +1,13 @@
+extends layout
+include mixins/_hotel
+block content
+    each hotel in hotelData
+        .hotel
+            //- Now we want that update and delete button only appears for the url staring with admin
+            if url.startsWith('/admin')
+                a(href=`${hotel._id}/update`)
+                    button(type="submit" class="button_small") Update
+                a(href=`${hotel._id}/delete`)
+                    button(type="submit" class="button_small") Delete
+
+            +hotel(hotel)

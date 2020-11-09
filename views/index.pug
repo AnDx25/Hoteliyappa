@@ -1,0 +1,43 @@
+extends layout
+
+include mixins/_hotel
+include mixins/_country_list.pug
+block content 
+  .outer_wrapper <!--THis is to wrap up all the contents-->
+    .hotel_wrapper <!--This is to wrap up only hotel section-->
+      h2 Hotels
+        a(href="/all") (see all):
+      ul
+        each hotel in filteredHotels
+          +hotel(hotel)
+    .country_wrapper
+      h2 Countries
+        a(href="/countries") (see all)
+      ul
+        each country in filteredCountries
+            +countryList(country._id)
+      //- .hotel<!--To cover info about hotels-->
+      //-   .hotel_img
+      //-     a(href="")
+      //-       img(src="/images/hotels/hotel1.jpg", alt="")
+      //-   .hotel_info
+      //-     a(href="")
+      //-       h3 Hotel 1
+      //-     hr
+      //-     p Star Rating : 4
+      //-     p Country : Jaimaica
+      //-     p Cost per night : 56
+
+      
+  //- h1= title
+  //- p Welcome to lets Travel!!
+  //- img(src="images/beach.jpg")
+  //- -const foods=['cheese','eggs','chicken']
+  //- div
+  //-   h1= name
+  //-   a(href="http://www.google.com") Google
+
+  //-   ul
+  //-     each food in foods  
+  //-       li= food
+

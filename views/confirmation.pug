@@ -1,0 +1,7 @@
+extends layout
+include mixins/_hotel
+
+block content
+    h2= title
+    each h in hotel
+        +hotel(h,searchData)

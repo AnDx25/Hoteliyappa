@@ -1,0 +1,31 @@
+extends layout
+block content
+    a(href="/admin")
+        button(type="button" class="button_small") Back to Admin
+    h2=title
+    form(action="" method="POST")
+        .form_input
+            label(for="hotel_name") Hotel Name
+            input(type="text" id="hotel_name" name="hotel_name" required)
+        .form_input
+            label(for="hotel_description") Hotel Description
+            textarea(name="hotel_description", cols="30", rows="10" id="hotel_description")
+        .form_input
+            label(for="hotel_image") Image
+            input(type="file", name="hotel_image",id="hotel_image" required)
+        .form_input
+            label(for="hotel_rating") rating
+            input(type="number", name="hotel_rating" id="hotel_rating" required)
+        .form_input
+            label(for="country") country
+            input(type="text" name="country" id="country" required)
+        .form_input
+            label(for="cost_per_night") cost per night
+            input(type="number", name="cost_per_night" id="cost_per_night" required)
+        .form_input
+            label(for="available") Available
+            input(type="radio" id="available" name="available" value="true" checked)
+            label(for="unavailable") Unavailable
+            input(type="radio" id="unavailable" name="unavailable" value="false") 
+        .form_input
+            button(type="submit" class="button_small") CONFIRM

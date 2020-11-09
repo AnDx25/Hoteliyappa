@@ -1,0 +1,17 @@
+extends layout
+include mixins/_hotel
+block content
+    h2=title
+    each hotel in hotels
+        .hotel_wrapper
+            +hotel(hotel)
+        //- .hotel_img
+        //-   a(href="")
+        //-     img(src="/images/hotels/hotel1.jpg", alt="")
+        //- .hotel_info
+        //-   a(href="")
+        //-     h3 Hotel 1
+        //-   hr
+        //-   p Star Rating : 4
+        //-   p Country : Jaimaica
+        //-   p Cost per night : 56
