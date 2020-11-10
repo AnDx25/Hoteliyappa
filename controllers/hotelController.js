@@ -13,11 +13,12 @@ cloudinary.config({
 const storage=multer.diskStorage({})
 const upload=multer({storage});
 exports.upload=upload.single('image');
-exports.pushToCloudinary =(req,res,next)=>{
+exports.pushToCloudinary =async (req,res,next)=>{
     if(req.file)
     {
         // Uploading file only if it is present
-        cloudinary.uploader.upload(req.file.path)
+        
+        await cloudinary.uploader.upload(req.file.path)
         .then((result)=>{
             req.body.image = result.public_id;
             //To 
@@ -200,17 +201,32 @@ exports.updateHotelPost= async (req,res,next)=>{
 }
 
 exports.deleteHotelGet= async (req,res,next)=>{
-    const hotelId=req.params.hotelId;
-    const hotel=await Hotel.findOne({_id : hotelId})
-    res.render('add_hotel',{title: 'Delete Hotel',hotel})
-
+    
+    try
+    {
+        const hotelId=req.params.hotelId;
+        const hotel=await Hotel.findOne({_id : hotelId})
+        res.render('add_hotel',{title: 'Delete Hotel',hotel})
+    
+    }catch(error)
+    {
+        next(error)
+    }
+  
 }
 
 exports.deleteHotelPost= async(req,res,next)=>{
-    const hotelId=req.params.hotelId;
-    await Hotel.deleteOne({_id : hotelId})
-    req.flash('info',`Hotel ID: ${hotelId} deleted successfully`)
-    res.redirect('/')
+    try
+    {
+        const hotelId=req.params.hotelId;
+        await Hotel.deleteOne({_id : hotelId})
+        req.flash('info',`Hotel ID: ${hotelId} deleted successfully`)
+        res.redirect('/')
+    }catch(error)
+    {
+        next(error)
+    }
+   
 }
 
 exports.hotelDetail=async(req,res,next)=>{
@@ -312,15 +328,4 @@ exports.viewBookings=async (req,res,next)=>{
  * So for that inside the signUp function use another param
  * next : which will guide what to execute next
 */
- exports.signUp=(req,res,next)=>{
-     //validate user info
-     console.log('signup middleware')
-     next()
-
- }
-
- exports.logIn=(req,res)=>{
-     //login
-     console.log('login middleware')
- }
-
+ 
