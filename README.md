@@ -1,5 +1,5 @@
-# Hoteliyappa (https://hoteliyappa.herokuapp.com/)
-A hotel booking website created with Node.js, Express.js, Pug and MongoDB.
+# Hoteliyappa
+A hotel booking website created with Node.js, Express.js, Pug and MongoDB. LiveUrl : https://hoteliyappa.herokuapp.com/
 ## Table of Contents
 * [General Info](#general-info)
 * [Prerequisites](#prerequisites)
